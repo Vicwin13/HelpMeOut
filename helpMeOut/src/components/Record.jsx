@@ -32,7 +32,7 @@ export default function Record() {
             </div>
             <div className="text-center p-0">
               <img src={video} alt="" />
-              <p>Camera</p>
+              <p>Camera</p> 
             </div>
             <div className="text-center">
               <img src={audio} alt="" />
