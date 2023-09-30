@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Help Me Out",
+  "icons": {
+    "32": "logo.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "logo.png"
+  },
+  "permission": ["activeTab", "desktopCapture", "audioCapture"]
+}
