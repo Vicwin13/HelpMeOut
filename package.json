@@ -2,10 +2,11 @@
   "name": "react",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-jsx": "webpack",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -22,12 +23,16 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
+    "babel-loader": "^9.1.3",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "file-loader": "^6.2.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
