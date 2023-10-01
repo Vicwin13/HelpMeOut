@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import edit from "../assets/edit.png";
 import copy from "../assets/copy.png";
 export default function ReadyVideo() {

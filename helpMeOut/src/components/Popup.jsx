@@ -8,7 +8,7 @@ import mic from "../assets/microphone.png";
 
 export default function Popup() {
   return (
-    <>
+    <div>
       <div className="w-[18.75rem] shadow-md mx-auto p-4 rounded-lg">
         <div className="flex justify-between items-center">
           <div className="flex gap-2 items-center">
@@ -76,6 +76,6 @@ export default function Popup() {
           Start Recording
         </button>
       </div>
-    </>
+    </div>
   );
 }
