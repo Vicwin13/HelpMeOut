@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build-jsx": "webpack",
+    "build-all": "vite build && webpack",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5",

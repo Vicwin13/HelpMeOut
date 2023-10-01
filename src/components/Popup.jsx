@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 import logo from "../assets/logo.png";
 import setting from "../assets/setting-2.png";
 import cancel from "../assets/close-circle.png";
@@ -6,7 +8,7 @@ import copy from "../assets/copy.png";
 import camera from "../assets/video-camera.png";
 import mic from "../assets/microphone.png";
 
-export default function Popup() {
+function Popup() {
   return (
     <div>
       <div className="w-[18.75rem] shadow-md mx-auto p-4 rounded-lg">
@@ -79,3 +81,9 @@ export default function Popup() {
     </div>
   );
 }
+
+ReactDOM.createRoot(document.getElementById("popup")).render(
+  <React.StrictMode>
+    <Popup />
+  </React.StrictMode>
+);
