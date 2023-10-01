@@ -1,11 +1,10 @@
 import LandingPage from "./components/LandingPage";
-import Popup from "./components/Popup";
-import Record from "./components/Record";
+// import Record from "./components/Record";
 
 function App() {
   return (
     <>
-      <Record />
+      {/* <Record /> */}
       <LandingPage />
     </>
   );

@@ -7,16 +7,6 @@ import bg2 from "../assets/grid.svg.png";
 import styled from "styled-components";
 
 export const LandingPageText = () => {
-  const gridIt = styled.div`
-    display: grid;
-    gap: 4px;
-    grid-template-column: 1fr 1fr;
-    grid-template-row: auto;
-    grid-template-areas:
-      "first  third"
-      "second third";
-  `;
-
   return (
     <div>
       <section className="flex h-screen items-center ml-[6.25rem] mr-[6.25rem] justify-center">
@@ -34,13 +24,27 @@ export const LandingPageText = () => {
         </div>
 
         <aside className="relative">
-          <gridIt>
-            <div>
-              <img className="pb-4 " src={frame1} alt="" />
-              <img className="" src={frame3} alt="" />
-            </div>
-            <img className="h-[%]" src={frame2} alt="" />
-          </gridIt>
+          <GridIt>
+            <img
+              style={{ gridArea: "first" }}
+              className="pb-4 "
+              src={frame1}
+              alt=""
+            />
+            <img
+              style={{ gridArea: "second" }}
+              className=""
+              src={frame3}
+              alt=""
+            />
+
+            <img
+              style={{ gridArea: "third" }}
+              className="h-[%]"
+              src={frame2}
+              alt=""
+            />
+          </GridIt>
           <img className="absolute -top-10 -right-10 -z-10" src={bg} alt="" />
           <img
             className="absolute -bottom-10 -z-10 -left-10"
@@ -52,3 +56,13 @@ export const LandingPageText = () => {
     </div>
   );
 };
+
+const GridIt = styled.div`
+  display: grid;
+  gap: 10px 20px;
+  grid-template-column: 1fr 1fr;
+  grid-template-row: auto;
+  grid-template-areas:
+    "first  third"
+    "second third";
+`;
