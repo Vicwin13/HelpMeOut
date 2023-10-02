@@ -2,7 +2,7 @@ import logo from "../assets/logo_white.png";
 export default function Footer() {
   return (
     <>
-      <div className="flex items-start justify-center text-white py-[6.12rem] p-[8.12rem] bg-red-500">
+      <div className="flex items-start justify-center bg-primary text-white py-[6.12rem] p-[8.12rem] ">
         <div className="flex mr-[15.19rem] items-center gap-2">
           <img src={logo} alt="" />
           <p className="font-bold text-[1rem]">HelpMeOut</p>

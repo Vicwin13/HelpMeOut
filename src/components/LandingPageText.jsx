@@ -18,7 +18,7 @@ export const LandingPageText = () => {
             Help your friends and loved ones by creating and sending videos on
             how to get things done on a website
           </p>
-          <button className="mt-10 p-4 rounded-md bg-red-600 font-semibold text-white border text-center">
+          <button className="mt-10 p-4 rounded-md bg-primary text-white font-semibold text-white border text-center">
             Install HelpMeOut <div></div>
           </button>
         </div>

@@ -3,11 +3,11 @@ import fb from "../assets/Facebook svg.png";
 
 export default function Login() {
   return (
-    <div className="h-screen flex justify-center items-center text-center">
+    <div className="h-screen  w-[29.7rem] pt-20 mx-auto items-center text-center">
       <div className="py-4 ">
         <div>
           <h1 className="  text-[2rem] font-bold">Log in or Sign up</h1>
-          <p className=" py-3 text-center text-sm font-light">
+          <p className=" py-3 text-center mx-auto w-[20rem] text-sm font-light">
             Join millions of others in sharing successful moves on HelpMeOut.
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function Login() {
               id=""
             />
           </div>
-          <button className=" w-full bg-red-500 p-3 mt-8 rounded-md font-bold">
+          <button className=" w-full text-white bg-primary p-3 mt-8 rounded-md font-bold">
             Sign Up
           </button>
         </div>

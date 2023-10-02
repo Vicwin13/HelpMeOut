@@ -5,7 +5,7 @@ export default function Cards() {
     <>
       <div className="flex flex-col lg:flex-row gap-20 justify-center items-center py-10 mr-[6.75rem] ml-[6.75rem]">
         <section className="w-[22.375rem] text-center">
-          <div className="bg-green-500 font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
+          <div className="bg-primary text-white font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
             1
           </div>
           <h1 className="py-6 font-bold text-[1.75rem] ">Record Screen</h1>
@@ -157,7 +157,7 @@ export default function Cards() {
           </div>
         </section>
         <section className="w-[22.375rem] text-center">
-          <div className="bg-green-500 font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
+          <div className="bg-primary text-white font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
             2
           </div>
           <h1 className="py-6 font-bold text-[1.75rem] ">
@@ -311,7 +311,7 @@ export default function Cards() {
           </div>
         </section>
         <section className="w-[22.375rem] text-center">
-          <div className="bg-green-500 font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
+          <div className="bg-primary text-white font-700 text-[2rem] w-[4.25rem] h-[4.25rem] rounded-full flex justify-center items-center mx-auto">
             3
           </div>
           <h1 className="py-6 font-bold text-[1.75rem] ">Learn Effortlessly</h1>

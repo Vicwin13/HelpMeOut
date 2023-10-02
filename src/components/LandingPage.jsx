@@ -3,13 +3,13 @@ import Features from "./Features";
 import { LandingPageText } from "./LandingPageText";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Login from "./Login";
+import ReadyVideo from "./ReadyVideo";
 
 export default function LandingPage() {
   return (
     <>
       <div>
-        <Login />
+        <ReadyVideo />
         <Navbar />
         <LandingPageText />
         <Features />

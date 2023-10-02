@@ -1,24 +1,57 @@
 const startRecording = async () => {
   const stream = await navigator.mediaDevices.getDisplayMedia({
+    audio: true,
     video: {
       mediaSource: "screen",
     },
   });
 
-  const data = [];
+  var video = [];
 
   const mediaRecorder = new MediaRecorder(stream);
 
   mediaRecorder.ondataavailable = (e) => {
-    data.push(e.data);
+    video.push(e.data);
   };
 
   mediaRecorder.start();
 
-  mediaRecorder.onstop = (e) => {
-    console.log(data);
+  mediaRecorder.onstop = async (stream) => {
+    stream.getTrack().array.forEach((element) => {
+      if (element.readyState === "live") {
+        element.stop();
+      }
+    });
+    console.log(video, "recording stopped");
+    const blob = new Blob(video, { type: "video/x-matroska;codecs=avc1" });
+
+    try {
+      const response = await fetch(
+        "https://ubong-inyang.onrender.com/api/videos",
+        {
+          method: "POST",
+          body: blob,
+          headers: {
+            "Content-Type": "video/x-matroska;codecs=avc1",
+          },
+        }
+      );
+      if (response.ok) {
+        console.log("data sent successfully");
+      } else {
+        console.error(
+          "failed to send data",
+          response.status,
+          response.statusText
+        );
+      }
+    } catch (err) {
+      console.error("Error sending data", err);
+    }
   };
 };
+
+startRecording();
 
 var port = chrome.runtime.connect();
 

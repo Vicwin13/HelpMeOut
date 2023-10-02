@@ -94,8 +94,7 @@ function Popup() {
         </div>
         <button
           onClick={() => startRecording()}
-          className="p-4 text-center w-full font-bold mt-4 rounded-3xl bg-blue-900">
-          {" "}
+          className="p-4 text-center text-white w-full font-bold mt-4 rounded-3xl bg-primary">
           Start Recording
         </button>
       </div>
