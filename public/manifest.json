@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "version": "1.0",
   "name": "Help Me Out",
+  "permissions": ["activeTab", "scripting", "tabs"],
   "icons": {
     "16": "logo.png",
     "32": "logo.png",
@@ -10,5 +11,17 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": "logo.png"
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["http://*/", "https://*/*"]
 }

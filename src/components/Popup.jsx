@@ -9,6 +9,25 @@ import camera from "../assets/video-camera.png";
 import mic from "../assets/microphone.png";
 
 function Popup() {
+  const startRecording = async () => {
+    // Specify the active tab to send the message to (content scripts run in the context of a tab).
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      // Create a message object with an action to trigger the content script function.
+      let message = { action: "triggerRecording" };
+
+      console.log("clicked start recording");
+
+      // Send the message to the content script in the active tab.
+      chrome.tabs.sendMessage(tabs[0].id, message, function (resp) {
+        if (!chrome.runtime.lastError) {
+          console.log(resp);
+        } else {
+          console.log(chrome.runtime.lastError, "Error recording in Popup.jsx");
+        }
+      });
+    });
+  };
+
   return (
     <div>
       <div className="w-[18.75rem] shadow-md mx-auto p-4 rounded-lg">
@@ -73,7 +92,9 @@ function Popup() {
             </label>
           </div>
         </div>
-        <button className="p-4 text-center w-full font-bold mt-4 rounded-3xl bg-blue-900">
+        <button
+          onClick={() => startRecording()}
+          className="p-4 text-center w-full font-bold mt-4 rounded-3xl bg-blue-900">
           {" "}
           Start Recording
         </button>
