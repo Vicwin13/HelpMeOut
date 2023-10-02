@@ -15,7 +15,7 @@ export default function Cards() {
             <h1 className="py-6 font-bold text-[1.75rem] text-primary ">
               Record Screen
             </h1>
-            <p className="text-[1.25rem] text-gray-500">
+            <p className="text-[1.25rem] text-gray-500 py-6">
               Click the "Start Recording" button in our extension. choose which
               part of your screen to capture and who you want to send it to.
             </p>
@@ -169,7 +169,7 @@ export default function Cards() {
             <h1 className="py-6 font-bold text-[1.75rem] text-primary ">
               Start Your Recording
             </h1>
-            <p className="text-[1.25rem] text-gray-500">
+            <p className="text-[1.25rem] text-gray-500 py-6">
               We generate a shareable link for your video. Simply send it to
               your audience via email or copy the link to send via any platform.
             </p>
@@ -323,7 +323,7 @@ export default function Cards() {
             <h1 className="py-6 font-bold text-[1.75rem] text-primary ">
               Learn Effortlessly
             </h1>
-            <p className="text-[1.25rem] text-gray-500">
+            <p className="text-[1.25rem] text-gray-500 py-6">
               Recipients can access your video effortlessly through the provided
               link, with our user-friendly interface suitable for everyone.
             </p>
