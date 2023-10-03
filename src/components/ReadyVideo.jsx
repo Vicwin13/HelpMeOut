@@ -1,17 +1,35 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import fb from "../assets/Facebook svg.png";
-import whatsapp from "../assets/Vector.png";
-import tg from "../assets/Group.png";
-import edit from "../assets/edit.png";
-import copy from "../assets/copy.png";
-import video from "../assets/video11.png";
+import { useEffect, useState } from "react";
+
 import Footer from "./Footer";
+import copy from "../assets/copy.png";
+import edit from "../assets/edit.png";
+import fb from "../assets/Facebook svg.png";
+import tg from "../assets/Group.png";
+import { useParams } from "react-router-dom";
+import whatsapp from "../assets/Vector.png";
 
 export default function ReadyVideo() {
+  const { videoId } = useParams();
+  const [stream, setStream] = useState();
+  const [transcript, setTranscript] = useState();
+
+  useEffect(() => {
+    if (videoId) {
+      fetch(`https://ubong-inyang.onrender.com/api/videos/${videoId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setStream(data.video_url);
+          setTranscript(data.transcription);
+        })
+        .catch(console.log);
+    }
+  }, [videoId]);
+
   return (
     <>
-      <div className=" ml-[6.75rem] mr-[6.75rem] flex justify-between">
+      <div className=" ml-[6.75rem] mr-[6.75rem] flex justify-between gap-8 py-20">
         <section>
           <h1 className="text-[2.8rem]">Your Video is ready</h1>
 
@@ -61,8 +79,11 @@ export default function ReadyVideo() {
         </section>
         <section>
           <div>
-            <img src={video} alt="" />
+            <video width="300" height="240" controls>
+              <source src={stream} type="video/webm" />
+            </video>
           </div>
+          <div> {transcript} </div>
         </section>
       </div>
       <div className="mx-auto w-[46.6875rem] text-center py-44">
@@ -76,7 +97,7 @@ export default function ReadyVideo() {
           </button>
         </div>
         <div className="flex text-[1.5rem] gap-2 mx-auto text-center justify-center">
-          <p className="text-ashText"> Don't have and account?</p>{" "}
+          <p className="text-ashText"> Don't have and account?</p>
           <span className="text-primary"> Create account</span>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import logo from "../assets/logo.png";
-import setting from "../assets/setting-2.png";
-import cancel from "../assets/close-circle.png";
-import monitor from "../assets/monitor.png";
-import copy from "../assets/copy.png";
 import camera from "../assets/video-camera.png";
+import cancel from "../assets/close-circle.png";
+import copy from "../assets/copy.png";
+import logo from "../assets/logo.png";
 import mic from "../assets/microphone.png";
+import monitor from "../assets/monitor.png";
+import setting from "../assets/setting-2.png";
 
 function Popup() {
   const startRecording = async () => {
@@ -18,13 +18,13 @@ function Popup() {
       console.log("clicked start recording");
 
       // Send the message to the content script in the active tab.
-      chrome.tabs.sendMessage(tabs[0].id, message, function (resp) {
-        if (!chrome.runtime.lastError) {
-          console.log(resp);
-        } else {
-          console.log(chrome.runtime.lastError, "Error recording in Popup.jsx");
-        }
-      });
+      // chrome.tabs.sendMessage(tabs[0].id, message, function (resp) {
+      //   if (!chrome.runtime.lastError) {
+      //     console.log(resp);
+      //   } else {
+      //     console.log(chrome.runtime.lastError, "Error recording in Popup.jsx");
+      //   }
+      // });
     });
   };
 
@@ -69,7 +69,7 @@ function Popup() {
                 className="peer sr-only"
               />
 
-              <span className="absolute  inset-0 rounded-full bg-gray-900 transition peer-checked:bg-green-500"></span>
+              <span className="absolute  inset-0 rounded-full bg-primary transition peer-checked:bg-green-500"></span>
 
               <span className="absolute inset-y-0 start-0 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
             </label>
@@ -86,7 +86,7 @@ function Popup() {
                 className="peer sr-only"
               />
 
-              <span className="absolute  inset-0 rounded-full bg-gray-900 transition peer-checked:bg-green-500"></span>
+              <span className="absolute  inset-0 rounded-full bg-primary transition peer-checked:bg-green-500"></span>
 
               <span className="absolute inset-y-0 start-0 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
             </label>

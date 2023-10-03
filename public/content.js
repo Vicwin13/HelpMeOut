@@ -1,4 +1,4 @@
-const startRecording = async () => {
+const beginRecording = async () => {
   const stream = await navigator.mediaDevices.getDisplayMedia({
     audio: true,
     video: {
@@ -10,34 +10,70 @@ const startRecording = async () => {
 
   const mediaRecorder = new MediaRecorder(stream);
 
-  mediaRecorder.ondataavailable = (e) => {
+  const startResponse = await fetch(
+    "https://ubong-inyang.onrender.com/api/videos",
+    {
+      method: "POST",
+    }
+  );
+  const videoId = await startResponse.json();
+
+  mediaRecorder.start(10 * 1000);
+
+  mediaRecorder.ondataavailable = async (e) => {
+    console.log(e.data);
     video.push(e.data);
+
+    const fileReader = new FileReader();
+
+    let base64String;
+
+    fileReader.readAsDataURL(e.data);
+    fileReader.onload = async function (event) {
+      base64String = event.target.result.split(",")[1];
+
+      const uploadResponse = await fetch(
+        `https://ubong-inyang.onrender.com/api/videos/${videoId}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            chunk: base64String,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const uploadJSON = await uploadResponse.json();
+      console.log(uploadJSON);
+    };
   };
 
-  mediaRecorder.start();
-
   mediaRecorder.onstop = async (stream) => {
-    stream.getTrack().array.forEach((element) => {
-      if (element.readyState === "live") {
-        element.stop();
-      }
-    });
+    // stream.getTrack().array.forEach((element) => {
+    //   if (element.readyState === "live") {
+    //     element.stop();
+    //   }
+    // });
     console.log(video, "recording stopped");
-    const blob = new Blob(video, { type: "video/x-matroska;codecs=avc1" });
 
     try {
       const response = await fetch(
-        "https://ubong-inyang.onrender.com/api/videos",
+        `https://ubong-inyang.onrender.com/api/videos/${videoId}/end_recording`,
         {
-          method: "POST",
-          body: blob,
+          method: "PUT",
+          body: JSON.stringify({
+            title: `Video-${Date.now()}`,
+          }),
           headers: {
-            "Content-Type": "video/x-matroska;codecs=avc1",
+            "Content-Type": "application/json",
           },
         }
       );
       if (response.ok) {
-        console.log("data sent successfully");
+        console.log("video streaming completed successfully.");
+        window.open(`http://localhost:5173/videos/${videoId}`, "_blank");
       } else {
         console.error(
           "failed to send data",
@@ -51,34 +87,34 @@ const startRecording = async () => {
   };
 };
 
-startRecording();
+beginRecording();
 
-var port = chrome.runtime.connect();
+// var port = chrome.runtime.connect();
 
-window.addEventListener(
-  "message",
-  (event) => {
-    // We only accept messages from ourselves
-    if (event.source !== window) {
-      return;
-    }
+// window.addEventListener(
+//   "message",
+//   (event) => {
+//     // We only accept messages from ourselves
+//     if (event.source !== window) {
+//       return;
+//     }
 
-    if (event.data.type && event.data.type === "FROM_PAGE") {
-      console.log("Content script received: " + event.data.text);
-      port.postMessage(event.data.text);
-    }
-  },
-  false
-);
+//     if (event.data.type && event.data.type === "FROM_PAGE") {
+//       console.log("Content script received: " + event.data.text);
+//       port.postMessage(event.data.text);
+//     }
+//   },
+//   false
+// );
 
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  // Check if the message is meant for your content script.
-  console.log("received message");
+// chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+//   // Check if the message is meant for your content script.
+//   console.log("received message");
 
-  if (message.action === "triggerRecording") {
-    // Call your function when the message is received.
-    console.log("Recording is starting");
-    startRecording();
-    sendResponse(`processed : ${message.action}`);
-  }
-});
+//   if (message.action === "triggerRecording") {
+//     // Call your function when the message is received.
+//     console.log("Recording is starting");
+//     beginRecording();
+//     sendResponse(`processed : ${message.action}`);
+//   }
+// });
